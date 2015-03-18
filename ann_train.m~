@@ -13,12 +13,10 @@ net.trainParam.lr = lr;
 net.trainParam.epochs = numEpoch;
 
 net.divideFcn = 'divideblock';
-numericLabel = zeros(size(train_data.y,1),1);
-for i = 1:size(train_data.y,1)
-    numericLabel(i,1) = find(train_data.y(i,:) == 1);
-end
 
-c = cvpartition(numericLabel,'HoldOut',v_ratio);
+numericLabel = (train_data.y(:,
+
+c = cvpartition(train_data.y,'HoldOut',v_ratio);
 trainInd = find(training(c)==1);
 valInd = find(training(c)==0);
 % all_size = tr_size + v_size + t_size;

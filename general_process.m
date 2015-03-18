@@ -9,7 +9,7 @@ test_data = load('test_32x32.mat');
 
 % Define Parameters
 % For ANN
-numHidden = 10;
+numHidden = 1000;
 numFvDim = 32*32*3;
 lr = 0.01;
 tr_ratio = 0.8;
@@ -29,9 +29,10 @@ distance = 'euclidean';
 % Run classifiers
 % ANN
 [net,tr] = ann_train(train_data_pp,test_data_pp,numHidden,numFvDim,lr,numEpoch,tr_ratio,v_ratio);
-pred_lb_ann = predict(net,test_data_pp.X);
+pred_lb_ann = net(test_data_pp.X);
 plotconfusion(test_data_pp.y,pred_lb_ann);
 test_acc_ann = cal_classify_result(pred_lb_ann,test_data_pp.y);
+tr
 
 % KNN
 [pred_lb_knn] = knn(knn_k,train_data_pp,test_data_pp,distance);
