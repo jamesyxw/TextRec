@@ -1,5 +1,8 @@
 % CSC2515 Project - Scene Digital Recognition
 
+clear all;
+close all;
+
 % load data
 train_data = load('train_32x32.mat');
 test_data = load('test_32x32.mat');
@@ -27,13 +30,13 @@ distance = 'euclidean';
 % ANN
 [net,tr] = ann_train(train_data_pp,test_data_pp,numHidden,numFvDim,lr,numEpoch,tr_ratio,v_ratio);
 pred_lb_ann = predict(net,test_data_pp.X);
+plotconfusion(test_data_pp.y,pred_lb_ann);
 test_acc_ann = cal_classify_result(pred_lb_ann,test_data_pp.y);
 
 % KNN
-[pred_lb_knn] = knn(k,train_data_pp,test_data_pp,distance);
+[pred_lb_knn] = knn(knn_k,train_data_pp,test_data_pp,distance);
+plotconfusion(test_data_pp.y,pred_lb_knn);
 test_acc_knn = cal_classify_result(pred_lb_knn,test_data_pp.y);
 
 % SVM
-
-
 
