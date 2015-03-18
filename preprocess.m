@@ -1,10 +1,9 @@
 function [train_data_pp] = preprocess(data,classifier)
 
-if(classifier == 'ann')
-train_data_pp = oneHot(data);
-           
-    
-end
+train_data_pp = data;
 
+if(classifier == 'ann' || classifier == 'knn')
+    train_data_pp = oneHot(data);
+end
 
 end
