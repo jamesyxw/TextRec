@@ -1,2 +1,6 @@
 #data file#
 *.mat
+
+#system files#
+.DS_Store
+
