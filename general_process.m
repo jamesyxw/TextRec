@@ -10,33 +10,42 @@ test_data = load('test_32x32.mat');
 % Usage: 
 % specify one of the following:
 % ann, svm, knn
-classifier = 'ann';
+classifier = 'knn';
 
 % Define Parameters
 % For ANN
-numHidden = 10;
-numFvDim = 32*32;
+numHidden = 20;
 lr = 0.01;
 tr_ratio = 0.8;
 v_ratio = 0.2;
 numEpoch = 1000;
-
 % For KNN
 knn_k = 3;
 distance = 'euclidean';
-
 % For SVM
 % polynomial, ...
 kernel = 'rbf';
-fprintf('Preprocessing ......\n');
+% For PCA
+pca_num = 10;
+
 % Preprocess goes here
+fprintf('Preprocessing ......\n');
 [train_data_pp] = preprocess(train_data,classifier);
 [test_data_pp] = preprocess(test_data,classifier);
+
+% PCA analysis - mostly for dimension reduction
+% assumption - gaussian - even brightness (no large brightness
+% variance) - For cropped grey-scale images almost true
+% TODO: verify - calculate the energy kept after PCA
+%              - visualize the image processed
+train_data_pp.X = pca_analysis(train_data_pp.X,pca_num);
+test_data_pp.X = pca_analysis(test_data_pp.X,pca_num);
 
 % Run classifiers
 if classifier == 'ann'
 % % ANN
 fprintf('Running ANN ......\n');
+numFvDim = size(train_data_pp.X,2);
 [net,tr] = ann_train(train_data_pp,test_data_pp,numHidden,numFvDim,lr,numEpoch,tr_ratio,v_ratio);
 % data must be in feature vector x numSamples, so do transpose
 pred_lb_ann = net(double(test_data_pp.X'));
