@@ -47,7 +47,9 @@ data_pp.X = reshape(data_pp.X,[numSample pp_pixel_per_sample]);
 % to get the rid of the factor of exposure difference (hopefully)
 % for now just subtract the mean, may divide the variance if necessary
 data_pp.X = data_pp.X';
-data_pp_norm = normalizeData(data_pp.X);
+data_pp_mean = mean(data_pp.X,2);
+data_pp_std = std(double(data_pp.X),[],2);
+data_pp_norm = double(data_pp.X-data_pp_mean) ./ data_pp_std;
 %data_pp.X = bsxfun(@minus,double(data_pp.X),data_pp_mean);
 %data_pp.X = data_pp.X';
 data_pp.X = data_pp_norm';

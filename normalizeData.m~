@@ -1,0 +1,9 @@
+function [ outputData ] = normalizeData( inputData )
+%normalizeData This function will normalize the inputData and output the
+%normalization result
+
+inputMean = mean(inputData,2);
+inputStd = std(inputData,[]);
+
+end
+
