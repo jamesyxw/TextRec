@@ -4,9 +4,10 @@ function [data_pp] = preprocess(data,classifier,indicator)
 % then perform segmentation
 numSample = size(data.X,4);
 % for i = 1:numSample
-%     data_pp.X(:,:,i) = rgb2gray(data.X(:,:,:,i));
+%      data_pp.X(:,:,i) = rgb2gray(data.X(:,:,:,i));
 % end
 % for faster process, skip the grayscale process
+
 if strcmp(indicator,'train')
     load('train_grayscale.mat');
 else

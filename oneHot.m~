@@ -16,15 +16,15 @@ for i = 1:numSample
             oneHotLabels(i,:) = [0 0 0 1 0 0 0 0 0 0];
         case 5
             oneHotLabels(i,:) = [0 0 0 0 1 0 0 0 0 0];
-        case 6
+        case 5
             oneHotLabels(i,:) = [0 0 0 0 0 1 0 0 0 0];
-        case 7
+        case 6
             oneHotLabels(i,:) = [0 0 0 0 0 0 1 0 0 0];
-        case 8
+        case 7
             oneHotLabels(i,:) = [0 0 0 0 0 0 0 1 0 0];
-        case 9
+        case 8
             oneHotLabels(i,:) = [0 0 0 0 0 0 0 0 1 0];
-        case 10
+        case 9
             oneHotLabels(i,:) = [0 0 0 0 0 0 0 0 0 1];
         otherwise
             fprintf('Error One Hot Conversion - Unknown\n');
