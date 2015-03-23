@@ -10,7 +10,7 @@ test_data = load('test_32x32.mat');
 % Usage: 
 % specify one of the following:
 % ann, svm, knn
-classifier = 'knn';
+classifier = 'ann';
 
 % Define Parameters
 % For ANN
@@ -30,8 +30,8 @@ pca_num = 10;
 
 % Preprocess goes here
 fprintf('Preprocessing ......\n');
-[train_data_pp] = preprocess(train_data,classifier);
-[test_data_pp] = preprocess(test_data,classifier);
+[train_data_pp] = preprocess(train_data,classifier,'train');
+[test_data_pp] = preprocess(test_data,classifier,'test');
 
 % PCA analysis - mostly for dimension reduction
 % assumption - gaussian - even brightness (no large brightness
