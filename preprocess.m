@@ -20,7 +20,8 @@ numYpixel = size(data_pp.X,2);
 pp_pixel_per_sample = numXpixel*numYpixel;
 % row - numSample
 % col - pixels per image
-data_pp.X = reshape(data_pp.X,[numSample pp_pixel_per_sample]);
+data_pp.X = reshape(data_pp.X,[pp_pixel_per_sample numSample]);
+data_pp.X = data_pp.X';
 
 % standarize the data
 % to get the rid of the factor of exposure difference (hopefully)

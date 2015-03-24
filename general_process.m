@@ -26,7 +26,7 @@ distance = 'euclidean';
 % polynomial, ...
 kernel = 'rbf';
 % For PCA
-pca_num = 10;
+pca_num = 16;
 
 % Preprocess goes here
 fprintf('Preprocessing ......\n');
@@ -38,6 +38,7 @@ fprintf('Preprocessing ......\n');
 % variance) - For cropped grey-scale images almost true
 % TODO: verify - calculate the energy kept after PCA
 %              - visualize the image processed
+fprintf('PCA ......\n');
 train_data_pp.X = pca_analysis(train_data_pp.X,pca_num);
 test_data_pp.X = pca_analysis(test_data_pp.X,pca_num);
 
