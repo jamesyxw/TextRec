@@ -9,8 +9,10 @@ numSample = size(data.X,4);
 % for faster process, skip the grayscale process
 
 if strcmp(indicator,'train')
+    %save('train_grayscale.mat','data_pp');
     load('train_grayscale.mat');
 else
+    %save('test_grayscale.mat','data_pp');
     load('test_grayscale.mat');
 end
 
