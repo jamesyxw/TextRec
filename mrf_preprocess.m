@@ -1,15 +1,9 @@
 function [ data_pp ] = mrf_preprocess( data,classifier,indicator )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
-%data_pp.X = segImgList(data.X);
+data_pp.X = segImgList(data.X);
 
-if strcmp(indicator,'train')
-    %save('train_mrf.mat','data_pp');
-    load('train_mrf.mat');
-else
-    %save('test_mrf.mat','data_pp');
-    load('test_mrf.mat');
-end
+
 numSample = size(data.X,4);
 numXpixel = size(data_pp.X,1);
 numYpixel = size(data_pp.X,2);
@@ -26,6 +20,14 @@ if (classifier == 'ann')
 else
     data_pp.y = data.y;
 end
+
+% if strcmp(indicator,'train')
+%     save('train_mrf.mat','data_pp');
+%     load('train_mrf.mat');
+% else
+%     save('test_mrf.mat','data_pp');
+%     load('test_mrf.mat');
+% end
 
 
 end
