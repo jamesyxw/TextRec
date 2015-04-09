@@ -1,4 +1,4 @@
-function [ output_args ] = displayImgList32by32( imageList)
+function [ output_args ] = displayImgList1024( imageList)
 %   This function will display the images contained in the imageList
 %   imageList must has dimension of N by 1024
 %   N: the number of image
