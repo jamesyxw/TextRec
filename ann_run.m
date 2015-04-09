@@ -1,12 +1,12 @@
 classifier = 'ann';
 
-train_data = load('train_32x32.mat');
-test_data = load('test_32x32.mat');
+% train_data = load('train_32x32.mat');
+% test_data = load('test_32x32.mat');
 
-[train_data_pp] = mrf_preprocess(train_data,classifier,'train');
-save('train_mrf.mat','train_data_pp');
-[test_data_pp] = mrf_preprocess(test_data,classifier,'test');
-save('test_mrf.mat','test_data_pp');
+% [train_data_pp] = mrf_preprocess(train_data,classifier,'train');
+% save('train_mrf.mat','train_data_pp');
+% [test_data_pp] = mrf_preprocess(test_data,classifier,'test');
+% save('test_mrf.mat','test_data_pp');
 
 % Define Parameters
 % For ANN
@@ -22,6 +22,8 @@ if pca_num ~= 0
     train_data_pp.X = pca_analysis(train_data_pp.X,pca_num);
     test_data_pp.X = pca_analysis(test_data_pp.X,pca_num);   
 end 
+
+numFvDim = size(train_data_pp.X,2);
 
 numHidden = [10];
 [net,tr] = ann_train(train_data_pp,test_data_pp,numHidden,numFvDim,lr,numEpoch,tr_ratio,v_ratio);
