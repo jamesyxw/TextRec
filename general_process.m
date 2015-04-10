@@ -1,6 +1,6 @@
 % CSC2515 Project - Scene Digital Recognition
 
-clear all;
+%clear all;
 close all;
 
 % load data
@@ -14,7 +14,7 @@ classifier = 'ann';
 
 % Define Parameters
 % For ANN
-numHidden = 20;
+numHidden = 200;
 lr = 0.01;
 tr_ratio = 0.8;
 v_ratio = 0.2;
@@ -39,8 +39,8 @@ fprintf('Preprocessing ......\n');
 % TODO: verify - calculate the energy kept after PCA
 %              - visualize the image processed
 fprintf('PCA ......\n');
-train_data_pp.X = pca_analysis(train_data_pp.X,pca_num);
-test_data_pp.X = pca_analysis(test_data_pp.X,pca_num);
+% train_data_pp.X = pca_analysis(train_data_pp.X,pca_num);
+% test_data_pp.X = pca_analysis(test_data_pp.X,pca_num);
 
 % Run classifiers
 if classifier == 'ann'

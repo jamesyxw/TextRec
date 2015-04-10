@@ -1,4 +1,4 @@
-function [ output_args ] = displayImgList1024( imageList, type)
+function [ output_args ] = displayImgList32by32( imageList)
 %   This function will display the images contained in the imageList
 %   imageList must has dimension of N by 1024
 %   N: the number of image
@@ -15,15 +15,14 @@ else
 end
 
 for i=1:numImg
-   originImg = reshape(imageList(i,:),[32 32]);
+   %originImg = reshape(imageList(i,:),[32 32]);
    subplot(numImgRow, numImgPerRow,i);
-   if strcmp(type,'mrf')
-      imshow(originImg,[1 2]); 
-   else
-      imshow(originImg, [0 255]); 
-   end
-   
+   imshow(originImg); 
 end
+
+end
+
+
 
 end
 

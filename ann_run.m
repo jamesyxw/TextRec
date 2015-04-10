@@ -11,6 +11,9 @@ classifier = 'ann';
 % Define Parameters
 % For ANN
 
+load('train_mrf.mat');
+load('test_mrf.mat');
+
 lr = 0.01;
 tr_ratio = 0.8;
 v_ratio = 0.2;
@@ -67,7 +70,7 @@ numFvDim = size(train_data_pp.X,2);
 % ann_model.tr = tr;
 % save(char(strcat( 'ann',array2str(numHidden),'.mat')), 'ann_model'); 
 
-numHidden = [500];
+numHidden = [20];
 [net,tr] = ann_train(train_data_pp,test_data_pp,numHidden,numFvDim,lr,numEpoch,tr_ratio,v_ratio);
 ann_model=struct();
 ann_model.net = net;

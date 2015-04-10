@@ -3,18 +3,12 @@ function [data_pp] = preprocess(data,classifier,indicator)
 % Gray-scale image conversion
 % then perform segmentation
 numSample = size(data.X,4);
-% for i = 1:numSample
-%      data_pp.X(:,:,i) = rgb2gray(data.X(:,:,:,i));
-% end
+for i = 1:numSample
+    data_pp.X(:,:,i) = rgb2gray(data.X(:,:,:,i));
+end
 % for faster process, skip the grayscale process
 
-if strcmp(indicator,'train')
-    %save('train_grayscale.mat','data_pp');
-    load('train_grayscale.mat');
-else
-    %save('test_grayscale.mat','data_pp');
-    load('test_grayscale.mat');
-end
+
 
 numXpixel = size(data_pp.X,1);
 numYpixel = size(data_pp.X,2);
@@ -36,6 +30,14 @@ if (classifier == 'ann')
     data_pp.y = oneHot(pre_one_hot);
 else
     data_pp.y = data.y;
+end
+
+if strcmp(indicator,'train')
+    save('train_grayscale.mat','data_pp');
+    load('train_grayscale.mat');
+else
+    save('test_grayscale.mat','data_pp');
+    load('test_grayscale.mat');
 end
 
 end
