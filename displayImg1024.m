@@ -1,9 +1,9 @@
-function [ img ] = printImg32by32(originImg, grayImg, mrfImg, imgIndex)
+function [ img ] = printImg32by32(originImg, grayImg, mrfImg, otsuImg, imgIndex)
 %UNTITLED11 Summary of this function goes here
 %   Detailed explanation goes here
 
 numImgRow = length(imgIndex);
-numImgPerRow = 3;
+numImgPerRow = 4;
 [originX originY] = size(originImg(1,:,:));
 [grayX grayY] = size(grayImg(1,:,:));
 [mrfX mrfY] = size(mrfImg(1,:,:));
@@ -18,18 +18,23 @@ numImgPerRow = 3;
 
 for i=1:numImgRow
    %originImg = reshape(imageList(i,:),[32 32]);
-   subplot(numImgRow, numImgPerRow,1+(i-1)*3);
+   subplot(numImgRow, numImgPerRow,1+(i-1)*numImgPerRow);
    imshow(originImg(:,:,:,imgIndex{i})); 
    
    
-   subplot(numImgRow, numImgPerRow,2+(i-1)*3);
+   subplot(numImgRow, numImgPerRow,2+(i-1)*numImgPerRow);
    gray = reshape(grayImg(imgIndex{i},:),[32 32]);
    imshow(gray, [0 255]);
    
    
-   subplot(numImgRow, numImgPerRow,3+(i-1)*3);
+   subplot(numImgRow, numImgPerRow,3+(i-1)*numImgPerRow);
    mrf = reshape(mrfImg(imgIndex{i},:),[32 32]);
    imshow(mrf, [1 2]); 
+   
+   subplot(numImgRow, numImgPerRow,4+(i-1)*numImgPerRow);
+   otsu = squeeze(otsuImg(imgIndex{i},:,:));
+   imshow(otsu); 
+   
 end
 
 

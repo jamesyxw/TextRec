@@ -4,7 +4,7 @@ imgIndex = {};
 
     
 for i = 1: 5
-   imgIndex{i} = randi(1000); 
+   imgIndex{i} = randi(73257); 
     
 end
 
@@ -15,7 +15,9 @@ end
 % grayTrainImg = data_pp.X;
 % load('train_mrf.mat');
 % mrfTrainImg = train_data_pp.X;
+% load('train_otsu.mat');
 
 
 
-displayImg1024(originTrainImg, grayTrainImg, mrfTrainImg, imgIndex);
+
+displayImg1024(originTrainImg, grayTrainImg, mrfTrainImg, otsuTrainImg, imgIndex);

@@ -10,8 +10,8 @@ function [result] = n_svm(TrainingSet,TrainingLabel,TestSet,kf,v_ratio)
     %fprintf('svm: training sample generalization acc: %f\n',1-isLoss);
     %----------------------------------------------------------------------
     %cross-validated SVM
-    %c = cvpartition(TrainingLabel,'HoldOut',v_ratio);
-    cvmdl = fitcecoc(TrainingSet,TrainingLabel,'Learners',t,'Crossval','on','KFold',10); 
+    c = cvpartition(TrainingLabel,'HoldOut',v_ratio);
+    cvmdl = fitcecoc(TrainingSet,TrainingLabel,'Learners',t,'Crossval','on','CVPartition',c); 
     mdl = cvmdl.Trained{1};
     result = predict(mdl,TestSet);
 %     label = kfoldPredict(cvmdl);

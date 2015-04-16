@@ -70,10 +70,10 @@ numFvDim = size(train_data_pp.X,2);
 % ann_model.tr = tr;
 % save(char(strcat( 'ann',array2str(numHidden),'.mat')), 'ann_model'); 
 
-numHidden = [20];
-[net,tr] = ann_train(train_data_pp,test_data_pp,numHidden,numFvDim,lr,numEpoch,tr_ratio,v_ratio);
-ann_model=struct();
-ann_model.net = net;
-ann_model.tr = tr;
-save(char(strcat( 'ann',array2str(numHidden),'.mat')), 'ann_model'); 
+% numHidden = [20];
+% [net,tr] = ann_train(train_data_pp,test_data_pp,numHidden,numFvDim,lr,numEpoch,tr_ratio,v_ratio);
+% ann_model=struct();
+% ann_model.net = net;
+% ann_model.tr = tr;
+% save(char(strcat( 'ann',array2str(numHidden),'.mat')), 'ann_model'); 
 
